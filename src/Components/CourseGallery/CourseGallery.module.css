@@ -1,0 +1,13 @@
+.gallery-section {
+    margin: 0 30px;
+    margin-top: 30px;
+    border-radius: 30px;
+    background-color: grey;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.gallery-section img {
+   height: 250px;
+}
