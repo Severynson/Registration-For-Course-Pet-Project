@@ -1,0 +1,10 @@
+.registration-form-div {
+    margin: 100px 300px;
+}
+
+.registration-form-div form {
+    display: grid;
+    grid-template-columns: 1fr;
+  
+    background-color: #dee2e6;
+}
