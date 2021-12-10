@@ -1,10 +1,74 @@
-.registration-form-div {
-    margin: 100px 300px;
+.registration-form-div form {
+  height: 250px;
+  width: 600px;
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color: #dee2e6;
+  padding: 15px;
+  gap: 5px;
+  border-radius: 30px;
+  margin: 0 auto;
+  margin-top: 30px;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
 }
 
-.registration-form-div form {
-    display: grid;
-    grid-template-columns: 1fr;
-  
-    background-color: #dee2e6;
+.registration-form-div form input {
+  border-radius: 10px;
+}
+
+.registration-form-div form button {
+  border-radius: 10px;
+  background-color: #be4bdb;
+  transition: all 0.6s;
+}
+
+.registration-form-div form button:active,
+.registration-form-div form button:hover {
+  background-color: #e599f7;
+  color: #5f3dc4;
+}
+
+.container {
+  height: 250px;
+  width: 600px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 135px 115px;
+  background-color: #dee2e6;
+  gap: 5px;
+  border-radius: 30px;
+  margin: 0 auto;
+  margin-top: 30px;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
+}
+
+.svg-and-p p {
+  text-align: center;
+  font-size: 30px;
+  color: #74b816;
+}
+
+.svg-and-p {
+  display: grid;
+  grid-template-columns: 100px 500px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.svg-done-icon {
+  padding-left: 40px;
+}
+
+.description p {
+  font-size: 25px;
+}
+.description {
+  padding-left: 55px;
+  margin-top: -25px;
 }

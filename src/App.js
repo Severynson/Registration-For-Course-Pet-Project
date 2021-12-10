@@ -7,10 +7,13 @@ import RegistrationForm from "./Components/RegistrationForm/RegistrationForm";
 
 function App() {
   const [registrationPage, setRegistrationPage] = useState(false);
+  const [logInPage, setLogInPage] = useState(false);
 
   const registrationPageChangeHandler = () => {
     setRegistrationPage((prevStatus) => !prevStatus);
   };
+
+  const logInHandler = () => {};
 
   return (
     <React.Fragment>
@@ -19,12 +22,24 @@ function App() {
       {!registrationPage && <CourseDescripton />}
       {!registrationPage && (
         <div className={classes["button-div"]}>
-          <button onClick={registrationPageChangeHandler} className={classes["registration-for-course"]}>
+          <button
+            onClick={registrationPageChangeHandler}
+            className={classes["button"]}
+          >
             Start registration for course
           </button>
         </div>
       )}
-      {registrationPage && <RegistrationForm />}
+      { !logInPage && !registrationPage &&
+        <div className={classes["button-div"]}>
+          <button className={classes["button"]}>Log In</button>
+        </div>
+      }
+      {registrationPage && (
+        <RegistrationForm
+          registrationPageChangeHandler={registrationPageChangeHandler}
+        />
+      )}
     </React.Fragment>
   );
 }
