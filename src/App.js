@@ -4,6 +4,7 @@ import Header from "./Components/Header/Header";
 import CourseDescripton from "./Components/Articles/CourseDescripton";
 import CourseGallery from "./Components/CourseGallery/CourseGallery";
 import RegistrationForm from "./Components/RegistrationForm/RegistrationForm";
+import CourseFeatures from "./Components/CourseFeatures/CourseFeatures.js"
 
 function App() {
   const [registrationPage, setRegistrationPage] = useState(false);
@@ -19,6 +20,7 @@ function App() {
     <React.Fragment>
       <Header />
       {!registrationPage && <CourseGallery />}
+      {!registrationPage && <CourseFeatures />}
       {!registrationPage && <CourseDescripton />}
       {!registrationPage && (
         <div className={classes["button-div"]}>

@@ -1,5 +1,6 @@
 .container {
-    margin: 30px;
+    max-width: 1260px;
+    margin: 30px auto;
     padding: 15px;
     background-color: #e9ecef;
     border-radius: 30px;

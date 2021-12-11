@@ -1,7 +1,6 @@
 import classes from "./RegistrationForm.module.css";
 import { React, useRef } from "react/cjs/react.development";
-import { useCallback, useState } from "react";
-import { BeakerIcon } from "@heroicons/react/solid";
+import { useState } from "react";
 
 const RegistrationForm = (props) => {
   const [submitForm, setSubmitForm] = useState(false);

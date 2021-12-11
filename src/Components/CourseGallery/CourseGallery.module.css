@@ -1,11 +1,12 @@
 .gallery-section {
-    margin: 0 30px;
+    margin: 0 auto;
     margin-top: 30px;
     border-radius: 30px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     overflow: hidden;
-    
+    max-width: fit-content;
+    gap: 5px;
 }
 
 .gallery-section img {
