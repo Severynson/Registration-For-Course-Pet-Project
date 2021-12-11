@@ -19,34 +19,20 @@ const Header = () => {
   const [animation, setAnimation] = useState(manPng);
   const [bulinForAnimation, setBulinForAnimation] = useState(true);
 
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-
-  //   }, 5000)
-
-  //   return () => clearInterval(intervalId); //This is important
-
-  // }, [animation])
-
   useEffect(() => {
     if (bulinForAnimation === false) {
-        setAnimation(() => hulkPng);
-        console.log('Hulk')
-      } else if (bulinForAnimation === true) {
-        setAnimation(() => manPng);
-        console.log('Man')
-      }
-
-      stateChangingFunc();
-  }, [bulinForAnimation])
+      setAnimation(() => hulkPng);
+    } else if (bulinForAnimation === true) {
+      setAnimation(() => manPng);
+    }
+    stateChangingFunc();
+  }, [bulinForAnimation]);
 
   const stateChangingFunc = () => {
-     setTimeout(() => {
-    setBulinForAnimation((prevState) => !prevState)
-    console.log(bulinForAnimation)
-  }, 3000);
-  }
- 
+    setTimeout(() => {
+      setBulinForAnimation((prevState) => !prevState);
+    }, 10000);
+  };
 
   return (
     <header className={classes["main-header"]}>
@@ -58,7 +44,7 @@ const Header = () => {
           alt="chicken incubatore immage"
         />
       </span>
-      <span>{animation}</span>
+      <span className={classes["man-or-hulk-span"]}>{animation}</span>
       <span>
         <h2>Studing platform</h2>
       </span>
