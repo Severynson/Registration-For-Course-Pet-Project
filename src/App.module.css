@@ -22,3 +22,9 @@
     background-color: #fff;
     color: black;
 }
+
+.admin-mod-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}

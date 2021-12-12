@@ -1,8 +1,8 @@
-import classes from "./RegistrationForm.module.css";
+import classes from "./CreatingAccount.module.css";
 import { React, useRef } from "react/cjs/react.development";
 import { useState } from "react";
 
-const RegistrationForm = (props) => {
+const CreatingAccount = (props) => {
   const [submitForm, setSubmitForm] = useState(false);
   const usernameRef = useRef("");
   const passwordRef = useRef("");
@@ -85,4 +85,4 @@ const RegistrationForm = (props) => {
   );
 };
 
-export default RegistrationForm;
+export default CreatingAccount;

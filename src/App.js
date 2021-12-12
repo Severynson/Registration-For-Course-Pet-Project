@@ -3,26 +3,40 @@ import classes from "./App.module.css";
 import Header from "./Components/Header/Header";
 import CourseDescripton from "./Components/Articles/CourseDescripton";
 import CourseGallery from "./Components/CourseGallery/CourseGallery";
-import RegistrationForm from "./Components/RegistrationForm/RegistrationForm";
-import CourseFeatures from "./Components/CourseFeatures/CourseFeatures.js"
+import CourseFeatures from "./Components/CourseFeatures/CourseFeatures.js";
+import CreatingAccount from "./Components/RegistrationForm/CreatingAccount";
+import AdminAcceptingStudents from "./Components/Admin/AdminAcceptingStudents.js";
 
 function App() {
   const [registrationPage, setRegistrationPage] = useState(false);
   const [logInPage, setLogInPage] = useState(false);
+  const [admin, setAdmin] = useState(false);
 
   const registrationPageChangeHandler = () => {
     setRegistrationPage((prevStatus) => !prevStatus);
   };
 
-  const logInHandler = () => {};
+  const adminChangeHandler = () => {
+    setAdmin((prevState) => !prevState);
+    console.log(admin);
+  };
 
   return (
     <React.Fragment>
       <Header />
-      {!registrationPage && <CourseGallery />}
-      {!registrationPage && <CourseFeatures />}
-      {!registrationPage && <CourseDescripton />}
-      {!registrationPage && (
+       {admin && <AdminAcceptingStudents />}
+      {!admin && !registrationPage && (
+        <button
+          onClick={adminChangeHandler}
+          className={classes["admin-mod-btn"]}
+        >
+          Admin mod
+        </button>
+      )}
+      {!admin && !registrationPage && <CourseGallery />}
+      {!admin && !registrationPage && <CourseFeatures />}
+      {!admin && !registrationPage && <CourseDescripton />}
+      {!admin && !registrationPage && (
         <div className={classes["button-div"]}>
           <button
             onClick={registrationPageChangeHandler}
@@ -32,16 +46,17 @@ function App() {
           </button>
         </div>
       )}
-      { !logInPage && !registrationPage &&
+      {!admin && !logInPage && !registrationPage && (
         <div className={classes["button-div"]}>
           <button className={classes["button"]}>Log In</button>
         </div>
-      }
+      )}
       {registrationPage && (
-        <RegistrationForm
+        <CreatingAccount
           registrationPageChangeHandler={registrationPageChangeHandler}
         />
       )}
+     
     </React.Fragment>
   );
 }
