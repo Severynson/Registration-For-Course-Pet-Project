@@ -1,0 +1,46 @@
+.main-container {
+    height: 300px;
+    width: 530px;
+    display: flex;
+    align-items: center;
+}
+
+.window {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.all-pages-container {
+    height: 100%;
+    display: flex;
+    transition: all 0.9s;
+}
+
+.arrow {
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+}
+
+.svgIconLeft, .svgIconRight {
+    height: 40px;
+    width: 40px;
+    background-color: darkslateblue;
+    color: #fff;
+    border-radius: 50%;
+    padding: 5px;
+    transition: all 0.5s;
+    z-index: 10;
+}
+
+.svgIconLeft {
+    transform: translateX(50%);
+}
+
+.svgIconRight {
+    transform: translateX(-50%);
+}
+
+

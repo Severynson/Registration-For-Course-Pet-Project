@@ -1,0 +1,22 @@
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    margin: 0 auto;
+}
+
+.item-1 {
+    background-color: cornflowerblue;
+}
+.item-2 {
+    background-color: coral;
+}
+.item-3 {
+    background-color: darkseagreen;
+}
+
+.container-for-sliders-main-page {
+    max-width: 1260px;
+    margin: 0 auto;
+}
