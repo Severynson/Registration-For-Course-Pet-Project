@@ -1,8 +1,8 @@
 import classes from "./CourseGallery.module.css";
-import coffeAndCode from "../../Pictures/coffe&code.jpg";
-import writingSomething from "../../Pictures/writing-something.jpg";
-import helpingEachOther from "../../Pictures/helpingEachOther.jpg";
-import workspace from "../../Pictures/workspace.jpg";
+import coffeAndCode from "../../../Pictures/coffe&code.jpg";
+import writingSomething from "../../../Pictures/writing-something.jpg";
+import helpingEachOther from "../../../Pictures/helpingEachOther.jpg";
+import workspace from "../../../Pictures/workspace.jpg";
 
 const CourseGallery = () => {
   return (

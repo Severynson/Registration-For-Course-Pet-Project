@@ -1,3 +1,9 @@
+.admin-mod-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
 .button-div {
     display: grid;
     justify-content: center;

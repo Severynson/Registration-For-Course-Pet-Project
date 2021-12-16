@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import classes from "./App.module.css";
 import Header from "./Components/Header/Header";
-import CourseDescripton from "./Components/Articles/CourseDescripton";
-import CourseGallery from "./Components/CourseGallery/CourseGallery";
-import CourseFeatures from "./Components/CourseFeatures/CourseFeatures.js";
 import CreatingAccount from "./Components/RegistrationForm/CreatingAccount";
 import AdminAcceptingStudents from "./Components/Admin/AdminAcceptingStudents.js";
+import MainPage from "./Components/MainPage/MainPage";
 
 function App() {
   const [registrationPage, setRegistrationPage] = useState(false);
@@ -24,27 +22,12 @@ function App() {
   return (
     <React.Fragment>
       <Header />
-       {admin && <AdminAcceptingStudents />}
+      {admin && <AdminAcceptingStudents />}
       {!admin && !registrationPage && (
-        <button
-          onClick={adminChangeHandler}
-          className={classes["admin-mod-btn"]}
-        >
-          Admin mod
-        </button>
-      )}
-      {!admin && !registrationPage && <CourseGallery />}
-      {!admin && !registrationPage && <CourseFeatures />}
-      {!admin && !registrationPage && <CourseDescripton />}
-      {!admin && !registrationPage && (
-        <div className={classes["button-div"]}>
-          <button
-            onClick={registrationPageChangeHandler}
-            className={classes["button"]}
-          >
-            Start registration for course
-          </button>
-        </div>
+        <MainPage
+          registrationPageChangeHandler={registrationPageChangeHandler}
+          adminChangeHandler={adminChangeHandler}
+        />
       )}
       {!admin && !logInPage && !registrationPage && (
         <div className={classes["button-div"]}>
@@ -56,7 +39,6 @@ function App() {
           registrationPageChangeHandler={registrationPageChangeHandler}
         />
       )}
-     
     </React.Fragment>
   );
 }

@@ -1,4 +1,4 @@
-import FeatureCard from "../UI/FeatureCard";
+import FeatureCard from "../../UI/FeatureCard";
 import classes from "./CourseFeatures.module.css";
 
 const features = [
