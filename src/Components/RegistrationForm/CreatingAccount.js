@@ -1,22 +1,36 @@
 import classes from "./CreatingAccount.module.css";
 import { React, useRef } from "react/cjs/react.development";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import FirstForm from "./FirstForm";
 
 const CreatingAccount = (props) => {
   const [submitFirstForm, setSubmitFirstForm] = useState(false);
-  const usernameRef = useRef("");
-  const passwordRef = useRef("");
-  const passwordAgainRef = useRef("");
+  const [submitSecondForm, setSubmitSecondForm] = useState(false);
   let userData;
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-    userData = {
-      username: usernameRef.current.value,
-      password: passwordRef.current.value,
-      passwordAgain: passwordAgainRef.current.value,
-    };
+  const onSubmitFirstFormHandler = (e) => {
+    // e.preventDefault();
     setSubmitFirstForm(true);
-    addNewUser(userData);
+    return userData = {
+      username: e.usernameRef.current.value,
+      password: e.passwordRef.current.value,
+      passwordAgain: e.passwordAgainRef.current.value,
+    };
+    
+    // addNewUser(userData);
+  };
+
+  useEffect(() => {
+    if (submitSecondForm) {
+      addNewUser(userData);
+    } else {
+      return;
+    }
+  }, [submitSecondForm]);
+
+  console.log(userData)
+
+  const onSubmitSecondFormHandler = (props) => {
+
   };
 
   async function addNewUser(userData) {
@@ -52,21 +66,31 @@ const CreatingAccount = (props) => {
     </svg>
   );
 
+const pictureRef = useRef('');
+const nameRef = useRef('');
+const gmailRef = useRef('');
+const instagramRef = useRef('');
+const textareaRef = useRef('');
+
+
   return (
     <div className={classes["registration-form-div"]}>
-      {!submitFirstForm && (
-        <form onSubmit={onSubmitHandler}>
-          <label>Username:</label>
-          <input ref={usernameRef}></input>
-          <label>Password:</label>
-          <input ref={passwordRef}></input>
-          <label>Password again:</label>
-          <input ref={passwordAgainRef}></input>
-          <button type="submit">Create account</button>
+      {submitFirstForm && <FirstForm onSubmitFirstFormHandler={onSubmitFirstFormHandler}/>}
+      {!submitFirstForm && submitSecondForm && (
+        <form className={classes["second-form"]}>
+          <label>Profile picture:</label>
+          <input ref={pictureRef}></input>
+          <label>Youre name:</label>
+          <input ref={nameRef}></input>
+          <label>Youre g-mail:</label>
+          <input ref={gmailRef}></input>
+          <label>Instagram:</label>
+          <input ref={instagramRef}></input>
+          <label>What is your motivation for course?</label>
+          <textarea ref={textareaRef}></textarea>
         </form>
       )}
-      {/* {submitFirstForm && !submitSecondForm && <SecondForm> } */}
-      {submitFirstForm && (
+      {submitFirstForm && submitSecondForm && (
         <div className={classes["container"]}>
           <div className={classes["svg-and-p"]}>
             <span className={classes["svg-done-icon"]}>
