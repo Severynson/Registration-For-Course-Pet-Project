@@ -1,8 +1,11 @@
 .main-container {
-    height: 300px;
-    width: 530px;
+    margin: 0 auto 0 auto;
+    height: 350px;
+    width: 980px;
     display: flex;
     align-items: center;
+    transform: translateX(-20px);
+    border-radius: 55px;
 }
 
 .window {
@@ -10,6 +13,9 @@
     width: 100%;
     overflow: hidden;
     z-index: -1;
+    border-radius: 30px;
+    background-color: #fff;
+    margin-top: 100px;
 }
 
 .all-pages-container {
@@ -36,11 +42,12 @@
 }
 
 .svgIconLeft {
-    transform: translateX(50%);
+    display: inline-block;
+    transform: translate(50%, 50px);
 }
 
 .svgIconRight {
-    transform: translateX(-50%);
+    transform: translate(-50%, 50px);
 }
 
 
