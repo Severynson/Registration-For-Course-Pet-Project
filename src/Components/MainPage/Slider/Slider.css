@@ -33,6 +33,7 @@
 .feedback-name {
     font-weight: 900;
     font-size: 40px;
+    padding: 10px;
 }
 
 .feedback-name p {

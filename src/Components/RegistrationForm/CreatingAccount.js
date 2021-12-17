@@ -3,7 +3,7 @@ import { React, useRef } from "react/cjs/react.development";
 import { useState } from "react";
 
 const CreatingAccount = (props) => {
-  const [submitForm, setSubmitForm] = useState(false);
+  const [submitFirstForm, setSubmitFirstForm] = useState(false);
   const usernameRef = useRef("");
   const passwordRef = useRef("");
   const passwordAgainRef = useRef("");
@@ -15,7 +15,7 @@ const CreatingAccount = (props) => {
       password: passwordRef.current.value,
       passwordAgain: passwordAgainRef.current.value,
     };
-    setSubmitForm(true);
+    setSubmitFirstForm(true);
     addNewUser(userData);
   };
 
@@ -54,7 +54,7 @@ const CreatingAccount = (props) => {
 
   return (
     <div className={classes["registration-form-div"]}>
-      {!submitForm && (
+      {!submitFirstForm && (
         <form onSubmit={onSubmitHandler}>
           <label>Username:</label>
           <input ref={usernameRef}></input>
@@ -65,7 +65,8 @@ const CreatingAccount = (props) => {
           <button type="submit">Create account</button>
         </form>
       )}
-      {submitForm && (
+      {/* {submitFirstForm && !submitSecondForm && <SecondForm> } */}
+      {submitFirstForm && (
         <div className={classes["container"]}>
           <div className={classes["svg-and-p"]}>
             <span className={classes["svg-done-icon"]}>
