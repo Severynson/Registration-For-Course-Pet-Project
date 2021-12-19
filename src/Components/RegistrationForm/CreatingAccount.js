@@ -10,10 +10,11 @@ const CreatingAccount = (props) => {
   let userData = {};
 
   const onSubmitFirstFormHandler = (props) => {
+    console.log(props.username)
         return userData = {
-      username: props.usernameRef.current.value,
-      password: props.passwordRef.current.value,
-      passwordAgain: props.passwordAgainRef.current.value,
+      username: props.username,
+      password: props.password,
+      passwordAgain: props.passwordAgain,
     };
     setSubmitFirstForm(true);
     console.log(userData);

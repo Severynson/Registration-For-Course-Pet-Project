@@ -14,6 +14,8 @@ const FirstForm = (props) => {
   const [passwordAgain, setPasswordAgain] = useState('');
   const [passwordAgainWasTouched, setPasswordAgainWasTouched] = useState(false);
   const [passwordAgainError, setPasswordAgainError] = useState(false);
+  //
+  const [formConfirmedEmpty, setFormConfirmedEmpty] = useState(false);
 
   
   const usernameInputHandler = (e) => {
@@ -27,40 +29,42 @@ const FirstForm = (props) => {
   const passwordAgainInputHandler = (e) => {
     setPasswordAgain(e.target.value);
   };
+  ///
+ 
 
+  
   useEffect(() => {
-    if (usernameWasTouched && username.trim().length < 6) {
+        if (usernameWasTouched && username.trim().length < 6) {
       setUsernameError(true);
     } else {
       setUsernameError(false);
     }
-  }, [username, usernameWasTouched])
 
-  useEffect(() => {
-    if (passwordWasTouched && password.trim().length < 6 && /\d/.test(password)) {
+      if (passwordWasTouched && password.trim().length < 6 || passwordWasTouched && !/\d/.test(password)) {
       setPasswordError(true);
     } else {
       setPasswordError(false);
     }
-  }, [password, passwordWasTouched])
 
-  useEffect(() => {
-    if (passwordAgainWasTouched && passwordAgain != password) {
+     if (passwordAgainWasTouched && passwordAgain != password) {
       setPasswordAgainError(true);
     } else {
       setPasswordAgainError(false);
     }
-  }, [passwordAgain, passwordAgainWasTouched])
+  }, [username, usernameWasTouched, password, passwordWasTouched, passwordAgain, passwordAgainWasTouched])
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    if (username.trim() === '') return;
+    if (usernameError || passwordError || passwordAgainError) {
+      setFormConfirmedEmpty(true);
+      return;
+    };
     console.log("Account was created!");
-    // props.onSubmitFirstFormHandler({
-    //   usernameRef: usernameRef,
-    //   passwordRef: passwordRef,
-    //   passwordAgainRef: passwordAgainRef,
-    // });
+    props.onSubmitFirstFormHandler({
+      username: username,
+      password: password,
+      passwordAgain: passwordAgain,
+    });
   };
 
 
@@ -77,6 +81,7 @@ const FirstForm = (props) => {
       <input onChange={passwordAgainInputHandler} onBlur={() => setPasswordAgainWasTouched(true)}></input>
       {(passwordAgainError && <p className={classes["error-text"]}>Passwords are not matching!</p>)}
       <button type="submit">Create account</button>
+      {formConfirmedEmpty && <p className={classes["error-text"]}>Form can't be submited empty or with mistakes!</p>}
     </form>
   );
 };

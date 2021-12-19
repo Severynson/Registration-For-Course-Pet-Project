@@ -17,4 +17,6 @@
 
   .error-text {
     color: #d6336c;
+    text-align: center;
+    margin: 0;
   }
