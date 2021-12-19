@@ -11,23 +11,15 @@ const CreatingAccount = (props) => {
 
   const onSubmitFirstFormHandler = (props) => {
     console.log(props.username)
+     
         return userData = {
       username: props.username,
       password: props.password,
       passwordAgain: props.passwordAgain,
     };
     setSubmitFirstForm(true);
-    console.log(userData);
     addNewUser(userData);
   };
-
-  // useEffect(() => {
-  //   if (submitSecondForm) {
-  //     addNewUser(userData);
-  //   } else {
-  //     return;
-  //   }
-  // }, [submitSecondForm]);
 
   // const onSubmitSecondFormHandler = (props) => {
   //   props.preventDefault();

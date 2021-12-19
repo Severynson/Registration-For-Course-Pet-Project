@@ -55,7 +55,7 @@ const FirstForm = (props) => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    if (usernameError || passwordError || passwordAgainError) {
+    if (usernameError || passwordError || passwordAgainError || username.trim() === '' || password.trim() === '' || passwordAgain.trim() === '') {
       setFormConfirmedEmpty(true);
       return;
     };
