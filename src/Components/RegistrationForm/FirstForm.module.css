@@ -1,5 +1,5 @@
 .first-form {
-    height: 250px;
+    /* height: 250px; */
     width: 600px;
     display: grid;
     grid-template-columns: 1fr;
@@ -13,4 +13,8 @@
     left: 50%;
     top: 30%;
     transform: translateX(-50%);
+  }
+
+  .error-text {
+    color: #d6336c;
   }
