@@ -1,5 +1,5 @@
 import classes from "./CreatingAccount.module.css";
-import { React, useRef } from "react";
+import { React } from "react";
 import { useEffect, useState } from "react";
 import FirstForm from "./FirstForm";
 import SecondForm from "./SecondForm";
@@ -7,39 +7,31 @@ import SecondForm from "./SecondForm";
 const CreatingAccount = (props) => {
   const [submitFirstForm, setSubmitFirstForm] = useState(false);
   const [submitSecondForm, setSubmitSecondForm] = useState(false);
-  let userData;
+  let userData = {};
 
-    const liftingUpFirstFormRefs = (e) => {
-      console.log(e.usernameRef);
-       return userData = {
-      username: e.usernameRef,
-      password: e.passwordRef,
-      passwordAgain: e.passwordAgainRef,
+  const onSubmitFirstFormHandler = (props) => {
+        return userData = {
+      username: props.usernameRef.current.value,
+      password: props.passwordRef.current.value,
+      passwordAgain: props.passwordAgainRef.current.value,
     };
-    }
-  const onSubmitFirstFormHandler = (e) => {
-    e.preventDefault();
     setSubmitFirstForm(true);
-  
-   
-    
-    // addNewUser(userData);
+    console.log(userData);
+    addNewUser(userData);
   };
 
-  useEffect(() => {
-    if (submitSecondForm) {
-      addNewUser(userData);
-    } else {
-      return;
-    }
-  }, [submitSecondForm]);
+  // useEffect(() => {
+  //   if (submitSecondForm) {
+  //     addNewUser(userData);
+  //   } else {
+  //     return;
+  //   }
+  // }, [submitSecondForm]);
 
-  console.log(userData)
-
-  const onSubmitSecondFormHandler = (props) => {
-    props.preventDefault();
-    console.log('mmmmm')
-  };
+  // const onSubmitSecondFormHandler = (props) => {
+  //   props.preventDefault();
+  //   console.log('mmmmm')
+  // };
 
   async function addNewUser(userData) {
     const response = await fetch(
@@ -56,7 +48,7 @@ const CreatingAccount = (props) => {
     const data = await response.json();
     console.log(data);
     setTimeout(() => props.registrationPageChangeHandler(), 6500);
-  }
+  };
 
   const AcceptSvg = () => (
     <svg
@@ -76,9 +68,8 @@ const CreatingAccount = (props) => {
 
   return (
     <div className={classes["registration-form-div"]}>
-      {!submitFirstForm && !submitSecondForm && <FirstForm liftingUpFirstFormRefs={liftingUpFirstFormRefs} onSubmitFirstFormHandler={onSubmitFirstFormHandler}/>}
-      {submitFirstForm && !submitSecondForm && <SecondForm onSubmitSecondFormHandler={onSubmitSecondFormHandler} />}
-      {submitFirstForm && !submitSecondForm && (
+      {!submitFirstForm && !submitSecondForm && <FirstForm onSubmitFirstFormHandler={onSubmitFirstFormHandler}/>}
+          {submitFirstForm && !submitSecondForm && (
         <div className={classes["container"]}>
           <div className={classes["svg-and-p"]}>
             <span className={classes["svg-done-icon"]}>
@@ -94,6 +85,8 @@ const CreatingAccount = (props) => {
           </div>
         </div>
       )}
+      {/* {submitFirstForm && !submitSecondForm && <SecondForm onSubmitSecondFormHandler={onSubmitSecondFormHandler} />} */}
+  
     </div>
   );
 };

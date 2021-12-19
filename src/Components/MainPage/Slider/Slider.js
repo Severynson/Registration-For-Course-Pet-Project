@@ -7,7 +7,7 @@ import Baumeister from "../../../Pictures/Baumeister.jpg";
 import Heidegger from "../../../Pictures/Heidegger.jpg";
 import Plato from "../../../Pictures/Plato.jpg";
 
-const imgCreater = (img) => <img src={img} className="feedbackImg" />
+const imgCreater = (img) => <img src={img} className="feedbackImg" alt="User avatar photo" />
 
 const feedbacksArr = [
   {
@@ -46,7 +46,7 @@ const Slider = () => {
       <Carousel>
         {feedbacksArr.map((feedback) => {
           return (
-            <div className="item">
+            <div className="item" key={Math.random()}>
               <span>{feedback.photo}</span>
               <span className="feedback-text-div">
                 <div className="feedback-name"><p>{feedback.name}</p></div>
