@@ -1,20 +1,27 @@
 import classes from "./CreatingAccount.module.css";
-import { React, useRef } from "react/cjs/react.development";
+import { React, useRef } from "react";
 import { useEffect, useState } from "react";
 import FirstForm from "./FirstForm";
+import SecondForm from "./SecondForm";
 
 const CreatingAccount = (props) => {
   const [submitFirstForm, setSubmitFirstForm] = useState(false);
   const [submitSecondForm, setSubmitSecondForm] = useState(false);
   let userData;
-  const onSubmitFirstFormHandler = (e) => {
-    // e.preventDefault();
-    setSubmitFirstForm(true);
-    return userData = {
-      username: e.usernameRef.current.value,
-      password: e.passwordRef.current.value,
-      passwordAgain: e.passwordAgainRef.current.value,
+
+    const liftingUpFirstFormRefs = (e) => {
+      console.log(e.usernameRef);
+       return userData = {
+      username: e.usernameRef,
+      password: e.passwordRef,
+      passwordAgain: e.passwordAgainRef,
     };
+    }
+  const onSubmitFirstFormHandler = (e) => {
+    e.preventDefault();
+    setSubmitFirstForm(true);
+  
+   
     
     // addNewUser(userData);
   };
@@ -30,7 +37,8 @@ const CreatingAccount = (props) => {
   console.log(userData)
 
   const onSubmitSecondFormHandler = (props) => {
-
+    props.preventDefault();
+    console.log('mmmmm')
   };
 
   async function addNewUser(userData) {
@@ -66,31 +74,11 @@ const CreatingAccount = (props) => {
     </svg>
   );
 
-const pictureRef = useRef('');
-const nameRef = useRef('');
-const gmailRef = useRef('');
-const instagramRef = useRef('');
-const textareaRef = useRef('');
-
-
   return (
     <div className={classes["registration-form-div"]}>
-      {submitFirstForm && <FirstForm onSubmitFirstFormHandler={onSubmitFirstFormHandler}/>}
-      {!submitFirstForm && submitSecondForm && (
-        <form className={classes["second-form"]}>
-          <label>Profile picture:</label>
-          <input ref={pictureRef}></input>
-          <label>Youre name:</label>
-          <input ref={nameRef}></input>
-          <label>Youre g-mail:</label>
-          <input ref={gmailRef}></input>
-          <label>Instagram:</label>
-          <input ref={instagramRef}></input>
-          <label>What is your motivation for course?</label>
-          <textarea ref={textareaRef}></textarea>
-        </form>
-      )}
-      {submitFirstForm && submitSecondForm && (
+      {!submitFirstForm && !submitSecondForm && <FirstForm liftingUpFirstFormRefs={liftingUpFirstFormRefs} onSubmitFirstFormHandler={onSubmitFirstFormHandler}/>}
+      {submitFirstForm && !submitSecondForm && <SecondForm onSubmitSecondFormHandler={onSubmitSecondFormHandler} />}
+      {submitFirstForm && !submitSecondForm && (
         <div className={classes["container"]}>
           <div className={classes["svg-and-p"]}>
             <span className={classes["svg-done-icon"]}>

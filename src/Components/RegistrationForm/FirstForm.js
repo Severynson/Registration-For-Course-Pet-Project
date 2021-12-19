@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 import classes from "./FirstForm.module.css";
 
 const FirstForm = (props) => {
@@ -6,7 +6,14 @@ const FirstForm = (props) => {
   const passwordRef = useRef("");
   const passwordAgainRef = useRef("");
 
-  props.onSubmitFirstFormHandler({usernameRef: usernameRef, passwordRef: passwordRef, passwordAgainRef: passwordAgainRef})
+  useCallback(
+    props.liftingUpFirstFormRefs({
+      usernameRef: usernameRef,
+      passwordRef: passwordRef,
+      passwordAgainRef: passwordAgainRef,
+    }),
+    []
+  );
 
   return (
     <form
