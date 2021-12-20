@@ -17,6 +17,8 @@ const userIcon = (
   </svg>
 );
 
+var usersList = [];
+
 const AdminAcceptingStudents = () => {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -34,19 +36,17 @@ const AdminAcceptingStudents = () => {
       }
 
       const data = await response.json();
-
-      const users = [];
-      console.log(users);
+      // console.log(usersList);
 
       for (const key in data) {
-        users.push({
+        usersList.push({
           id: Math.random().toString(),
           username: data[key].username,
           textarea: data[key].textarea,
         });
       }
 
-      setUsers(users);
+      setUsers(usersList);
     } catch (error) {
       setError(error.message);
     }
@@ -56,6 +56,18 @@ const AdminAcceptingStudents = () => {
   useEffect(() => {
     fetchMoviesHandler();
   }, [fetchMoviesHandler]);
+
+  const rerenderListAfterAccept = (component) => {
+    console.log(component)
+    console.log(users)
+    let newUsersList = [];
+    users.forEach((user, i) => {
+      if (user.username !== component) {
+        newUsersList.push(user);
+      }
+    })
+    setUsers(newUsersList);
+  }
 
   return (
     <div className={styles["admin-main-div"]}>
@@ -71,7 +83,7 @@ const AdminAcceptingStudents = () => {
                 <li key={Math.random()}>{curUser.username}</li>
               </span>
               <p>{curUser.textarea}</p>
-              <button className={styles["button"]}>Accept</button>
+              <button className={styles["button"]} onClick={() => rerenderListAfterAccept(curUser.username)}>Accept</button>
             </div>
           );
         })}

@@ -4,6 +4,8 @@ import Header from "./Components/Header/Header";
 import CreatingAccount from "./Components/RegistrationForm/CreatingAccount";
 import AdminAcceptingStudents from "./Components/Admin/AdminAcceptingStudents.js";
 import MainPage from "./Components/MainPage/MainPage";
+import LogIn from "./Components/LogIn/LogIn";
+import { set } from "react-hook-form";
 
 function App() {
   const [registrationPage, setRegistrationPage] = useState(false);
@@ -12,6 +14,10 @@ function App() {
 
   const registrationPageChangeHandler = () => {
     setRegistrationPage((prevStatus) => !prevStatus);
+  };
+
+  const logInHandler = () => {
+    setLogInPage(true)
   };
 
   const adminChangeHandler = () => {
@@ -23,15 +29,15 @@ function App() {
     <React.Fragment>
       <Header />
       {admin && <AdminAcceptingStudents />}
-      {!admin && !registrationPage && (
+      {!logInPage && !admin && !registrationPage && (
         <MainPage
           registrationPageChangeHandler={registrationPageChangeHandler}
           adminChangeHandler={adminChangeHandler}
         />
       )}
-      {!admin && !logInPage && !registrationPage && (
+      {!logInPage && !admin && !logInPage && !registrationPage && (
         <div className={classes["button-div"]}>
-          <button className={classes["button"]}>Log In</button>
+          <button onClick={logInHandler} className={classes["button"]}>Log In</button>
         </div>
       )}
       {registrationPage && (
@@ -39,6 +45,7 @@ function App() {
           registrationPageChangeHandler={registrationPageChangeHandler}
         />
       )}
+      {logInPage &&  <LogIn />}
     </React.Fragment>
   );
 }
