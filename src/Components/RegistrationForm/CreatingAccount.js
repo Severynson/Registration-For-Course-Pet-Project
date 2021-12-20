@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import FirstForm from "./FirstForm";
 import SecondForm from "./SecondForm";
   let userData = {};
+
 const CreatingAccount = (props) => {
   const [submitFirstForm, setSubmitFirstForm] = useState(false);
   const [submitSecondForm, setSubmitSecondForm] = useState(false);
@@ -17,14 +18,19 @@ const CreatingAccount = (props) => {
       password: props.password,
       passwordAgain: props.passwordAgain,
     });
-
-    addNewUser(userData);
   };
 
   const onSubmitSecondFormHandler = (data) => {
     console.log("mmmmm----------mmmmmm");
-    console.log(data)
-    console.log(userData);
+    userData.userPicture = data.userPicture[0];
+    userData.name = data.name;
+    userData.instagram = data.instagram;
+    userData.gmail = data.gmail;
+    userData.textarea = data.textarea;
+    delete userData.passwordAgain;
+    console.log(userData)
+    setSubmitSecondForm(true);
+    addNewUser(userData);
   };
 
   async function addNewUser(userData) {
