@@ -8,6 +8,7 @@ import SecondForm from "./SecondForm";
 const CreatingAccount = (props) => {
   const [submitFirstForm, setSubmitFirstForm] = useState(false);
   const [submitSecondForm, setSubmitSecondForm] = useState(false);
+  const [accountCreated, setAccountCreated] = useState(false);
 
 
   const onSubmitFirstFormHandler = (props) => {
@@ -31,6 +32,10 @@ const CreatingAccount = (props) => {
     console.log(userData)
     setSubmitSecondForm(true);
     addNewUser(userData);
+    setAccountCreated(true);
+    setTimeout(() => {
+      setAccountCreated(false);
+    }, 5000)
   };
 
   async function addNewUser(userData) {
@@ -71,7 +76,7 @@ const CreatingAccount = (props) => {
       {!submitFirstForm && !submitSecondForm && (
         <FirstForm onSubmitFirstFormHandler={onSubmitFirstFormHandler} />
       )}
-      {/* {submitFirstForm && !submitSecondForm && (
+      {submitFirstForm && submitSecondForm && accountCreated && (
         <div className={classes["container"]}>
         <div className={classes["svg-and-p"]}>
           <span className={classes["svg-done-icon"]}>
@@ -86,7 +91,7 @@ const CreatingAccount = (props) => {
           </p>
         </div>
       </div>
-      )} */}
+      )}
       {submitFirstForm && !submitSecondForm && (
         <SecondForm
           userData={userData}
