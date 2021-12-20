@@ -55,20 +55,3 @@
   padding-left: 55px;
   margin-top: -25px;
 }
-
-.second-form {
-  height: 550px;
-  width: 900px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background-color: #dee2e6;
-  padding: 15px;
-  gap: 5px;
-  border-radius: 30px;
-  /* margin: 0 auto; */
-  margin-top: 30px;
-  position: absolute;
-  left: 50%;
-  top: 30%;
-  transform: translateX(-50%);
-}

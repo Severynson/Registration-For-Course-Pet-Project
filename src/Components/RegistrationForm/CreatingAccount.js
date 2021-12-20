@@ -3,28 +3,29 @@ import { React } from "react";
 import { useEffect, useState } from "react";
 import FirstForm from "./FirstForm";
 import SecondForm from "./SecondForm";
-
+  let userData = {};
 const CreatingAccount = (props) => {
   const [submitFirstForm, setSubmitFirstForm] = useState(false);
   const [submitSecondForm, setSubmitSecondForm] = useState(false);
-  let userData = {};
+
 
   const onSubmitFirstFormHandler = (props) => {
-    console.log(props.username)
-     
-        return userData = {
+    console.log(props.username);
+    setSubmitFirstForm(true);
+    return (userData = {
       username: props.username,
       password: props.password,
       passwordAgain: props.passwordAgain,
-    };
-    setSubmitFirstForm(true);
+    });
+
     addNewUser(userData);
   };
 
-  // const onSubmitSecondFormHandler = (props) => {
-  //   props.preventDefault();
-  //   console.log('mmmmm')
-  // };
+  const onSubmitSecondFormHandler = (data) => {
+    console.log("mmmmm----------mmmmmm");
+    console.log(data)
+    console.log(userData);
+  };
 
   async function addNewUser(userData) {
     const response = await fetch(
@@ -41,7 +42,7 @@ const CreatingAccount = (props) => {
     const data = await response.json();
     console.log(data);
     setTimeout(() => props.registrationPageChangeHandler(), 6500);
-  };
+  }
 
   const AcceptSvg = () => (
     <svg
@@ -61,25 +62,31 @@ const CreatingAccount = (props) => {
 
   return (
     <div className={classes["registration-form-div"]}>
-      {!submitFirstForm && !submitSecondForm && <FirstForm onSubmitFirstFormHandler={onSubmitFirstFormHandler}/>}
-          {submitFirstForm && !submitSecondForm && (
-        <div className={classes["container"]}>
-          <div className={classes["svg-and-p"]}>
-            <span className={classes["svg-done-icon"]}>
-              <AcceptSvg />
-            </span>
-            <p>Account created successfully!</p>
-          </div>
-          <div className={classes["description"]}>
-            <p>
-              We will sent you a feedback in a few days. Check your status in
-              the own cabinet.
-            </p>
-          </div>
-        </div>
+      {!submitFirstForm && !submitSecondForm && (
+        <FirstForm onSubmitFirstFormHandler={onSubmitFirstFormHandler} />
       )}
-      {/* {submitFirstForm && !submitSecondForm && <SecondForm onSubmitSecondFormHandler={onSubmitSecondFormHandler} />} */}
-  
+      {/* {submitFirstForm && !submitSecondForm && (
+        <div className={classes["container"]}>
+        <div className={classes["svg-and-p"]}>
+          <span className={classes["svg-done-icon"]}>
+            <AcceptSvg />
+          </span>
+          <p>Account created successfully!</p>
+        </div>
+        <div className={classes["description"]}>
+          <p>
+            We will sent you a feedback in a few days. Check your status in
+            the own cabinet.
+          </p>
+        </div>
+      </div>
+      )} */}
+      {submitFirstForm && !submitSecondForm && (
+        <SecondForm
+          userData={userData}
+          onSubmitSecondFormHandler={onSubmitSecondFormHandler}
+        />
+      )}
     </div>
   );
 };
